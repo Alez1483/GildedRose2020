@@ -160,6 +160,10 @@ public class GildedRoseTest
 	@Test
 	public void mainMethodTest()
 	{
+		// construct GildedRose object so that values from the static array can be read
+		// after main is called
+		GildedRose inn = new GildedRose();
+
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PrintStream out = new PrintStream(outputStream);
 
@@ -171,20 +175,24 @@ public class GildedRoseTest
 		assertTrue(outputString.contains("OMGHAI!")); // tests the output to the console
 
 		out.close();
+
+		final int[] expectedQualities = { 19, 1, 6, 80, 21, 5 };
+		for (int index = 0; index < 6; index++)
+		{
+			assertEquals("Failed to update quality correctly", expectedQualities[index], inn.getItems().get(index).getQuality());
+		}
 	}
 
 	@Test
 	public void loopTests()
 	{
-		final String[] testItems =
-		{ 
-			"+5 Dexterity Vest", 
-			"Aged Brie", 
-			"Elixir of the Mongoose", 
-			"Sulfuras, Hand of Ragnaros", 
-			"Backstage passes to a TAFKAL80ETC concert", 
-			"Conjured Mana Cake" 
-		};
+		final String[] testItems = { 
+				"+5 Dexterity Vest", 
+				"Aged Brie", 
+				"Elixir of the Mongoose", 
+				"Sulfuras, Hand of Ragnaros", 
+				"Backstage passes to a TAFKAL80ETC concert", 
+				"Conjured Mana Cake" };
 		// look up values for the items above, starting from sellIn 20 and quality 10
 		final int[] expectedSellInAfterDay = { 19, 19, 19, 20, 19, 19 };
 		final int[] expectedQualityAfterDay = { 9, 11, 9, 10, 11, 9 };

@@ -31,8 +31,7 @@ public class GildedRose
 	{
 		for (int i = 0; i < items.size(); i++)
 		{
-			if ((!"Aged Brie".equals(items.get(i).getName()))
-					&& !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
+			if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
 			{
 				if (items.get(i).getQuality() > 0)
 				{
